@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf8"?>
+ <!DOCTYPE hibernateconfiguration SYSTEM 
+ "http://www.hibernate.org/dtd/hibernateconfiguration3.0.dtd">
+ 
+ <hibernateconfiguration>
+ 	<sessionfactory>
+ 	   <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+ 		    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+ 	
+ 		  <property name="connection.url">jdbc:mysql://localhost:3306/cinema</property>
+ 		  <property name="connection.username">root</property>
+ 		  <property name="connection.password"></property>
+ 
+ 		<! List of XML mapping files >
+ 		<mapping resource="Movie.hbm.xml" />
+ 		<mapping resource="Projection.hbm.xml"/>
+ 		<mapping resource="Reservation.hbm.xml"/>
+ 
+ 	</sessionfactory>
+ </hibernateconfiguration>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf8"?>
+ <!DOCTYPE hibernatemapping PUBLIC 
+  "//Hibernate/Hibernate Mapping DTD//EN"
+  "http://www.hibernate.org/dtd/hibernatemapping3.0.dtd"> 
+ 
+ <hibernatemapping>
+    <class name="Movie" table="movies">
+       <id name="id" type="int" column="id">
+          <generator class="native"/>
+       </id>
+       <property name="name" column="name" type="string"/>
+       <property name="rating" column="rating" type="double"/>
+    </class>
+ </hibernatemapping> 

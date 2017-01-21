@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf8"?>
+ <!DOCTYPE hibernatemapping PUBLIC 
+  "//Hibernate/Hibernate Mapping DTD//EN"
+  "http://www.hibernate.org/dtd/hibernatemapping3.0.dtd"> 
+ 
+ <hibernatemapping>
+    <class name="Projection" table="projections">
+       <id name="id" type="int" column="id">
+          <generator class="native"/>
+       </id>
+       <property name="movieId" column="movie_id" type="int"/>
+       <property name="type" column="type" type="string"/>
+       <property name="date" column="date" type="string"/>
+       <property name="time" column="time" type="string"/>
+    </class>
+ </hibernatemapping> 
