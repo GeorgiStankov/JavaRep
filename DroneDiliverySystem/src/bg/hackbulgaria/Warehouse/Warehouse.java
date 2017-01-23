@@ -1,0 +1,92 @@
+package bg.hackbulgaria.Warehouse;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+import bg.hackbulgaria.Coordinates.Coordinates;
+import bg.hackbulgaria.Distribution.DistributionCenter;
+import bg.hackbulgaria.Drone.Drone;
+import bg.hackbulgaria.DroneConstants.DroneConstants;
+
+public class Warehouse {
+
+	private DistributionCenter center;
+	private Coordinates coordinate;
+	private Map<Product, Integer> availableProducts;
+	private Map<Integer, Integer> idQuantity;
+	public Queue<Order> orders;
+	private List<Drone> drones;
+	private int id_counter = 1;
+
+	public Warehouse(Coordinates coords) {
+		this.coordinate = coords;
+		availableProducts = new ConcurrentHashMap<>();
+		idQuantity = new ConcurrentHashMap<Integer, Integer>();
+		orders = new ConcurrentLinkedQueue<>();
+		drones = new CopyOnWriteArrayList<>();
+		for (int i = 0; i < DroneConstants.MAX_DRONES; i++) {
+			drones.add(new Drone());
+		}
+		center = new DistributionCenter(this);
+
+	}
+
+	public List<Drone> getDrones() {
+		return drones;
+	}
+
+	public void setDrones(List<Drone> drones) {
+		this.drones = drones;
+	}
+
+	public void addProduct(Product product) {
+
+		if (availableProducts.containsKey(product)) {
+
+			int product_id = availableProducts.get(product);
+			idQuantity.put(product_id, idQuantity.get(product_id) + 1);
+
+		} else {
+
+			availableProducts.put(product, id_counter);
+			id_counter++;
+
+			idQuantity.put(availableProducts.get(product), 1);
+		}
+	}
+
+	public synchronized boolean containsProductNTimes(int product, int quantity) {
+		if (idQuantity.containsKey(product)) {
+			if (idQuantity.get(product) >= quantity) {
+				return true;
+			}
+
+		}
+		return false;
+	}
+
+	public synchronized void removeProductNTimes(int product, int quantity) {
+		if (idQuantity.get(product) > quantity) {
+			int quantityLeft = idQuantity.get(product) - quantity;
+
+			idQuantity.put(product, quantityLeft);
+		}
+		if (idQuantity.get(product) == quantity){
+			idQuantity.put(product,0);
+		}
+			
+	}
+
+	public Map<Product, Integer> getAvailableProducts() {
+		return availableProducts;
+	}
+
+	public void setAvailableProducts(Map<Product, Integer> availableProducts) {
+		this.availableProducts = availableProducts;
+	}
+	
+}
