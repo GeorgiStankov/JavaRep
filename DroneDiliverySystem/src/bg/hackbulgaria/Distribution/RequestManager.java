@@ -14,5 +14,8 @@ public class RequestManager {
 
 		return dc.containProduct(order) && dc.enoughDrones(order);
 	}
+	public boolean acceptSupply(Order order){
+		return false;
+	}
 
 }

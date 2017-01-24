@@ -1,9 +1,12 @@
 package bg.hackbulgaria.Calculations;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 import bg.hackbulgaria.Coordinates.Coordinates;
 import bg.hackbulgaria.Warehouse.Order;
+import bg.hackbulgaria.Warehouse.Product;
 
 public class Parse {
 
@@ -23,5 +26,15 @@ public class Parse {
 		order.setCoords(coord);
 		order.setOrder(goods);
 		return order;
+	}
+
+	public static List<Product> ParseSupplyToProduct(String request) {
+		String[] parts = request.split(" ");
+		List<Product> goods = new LinkedList<Product>();
+		for (int i = 4; i < parts.length; i += 3) {
+			
+		}
+
+		return null;
 	}
 }

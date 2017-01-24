@@ -5,6 +5,9 @@ public class Product {
 	private String name;
 	private double weightPerQuantity;
 
+	public Product() {
+	}
+
 	public Product(int id, String n, double w) {
 		this.id = id;
 		this.name = n;

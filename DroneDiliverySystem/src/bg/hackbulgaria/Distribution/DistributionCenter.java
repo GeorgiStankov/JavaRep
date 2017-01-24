@@ -5,18 +5,17 @@ import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import bg.hackbulgaria.Calculations.CalculateParameters;
-import bg.hackbulgaria.Drone.Drone;
 import bg.hackbulgaria.DroneConstants.DroneConstants;
 import bg.hackbulgaria.Warehouse.Order;
 import bg.hackbulgaria.Warehouse.Warehouse;
 
 public class DistributionCenter {
 	private List<Warehouse> whs = new CopyOnWriteArrayList<Warehouse>();
-	private List<Drone> drones;
+	
 
 	public DistributionCenter(Warehouse warehouse) {
 		whs.add(warehouse);
-		this.drones = warehouse.getDrones();
+		
 	}
 
 	public boolean containProduct(Order order) {

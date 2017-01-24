@@ -58,7 +58,7 @@ public class Warehouse {
 			idQuantity.put(availableProducts.get(product), 1);
 		}
 	}
-
+	
 	public synchronized boolean containsProductNTimes(int product, int quantity) {
 		if (idQuantity.containsKey(product)) {
 			if (idQuantity.get(product) >= quantity) {

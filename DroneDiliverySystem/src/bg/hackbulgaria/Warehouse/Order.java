@@ -5,6 +5,7 @@ import java.util.Map;
 import bg.hackbulgaria.Coordinates.Coordinates;
 
 public class Order {
+	
 	private int id;
 	// number of quantity of given product
 	// id-->quantity

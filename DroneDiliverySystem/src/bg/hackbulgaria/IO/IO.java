@@ -15,4 +15,7 @@ public class IO {
 		Order request = new Order(Parse.ParseDeliveryToOrder(delivery));
 		return rm.acceptRequest(request);
 	}
+	public boolean acceptSupply(String supply){
+		return false;
+	}
 }
