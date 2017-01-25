@@ -1,5 +1,6 @@
 package bg.hackbulgaria.Warehouse;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
@@ -56,6 +57,15 @@ public class Warehouse {
 			id_counter++;
 
 			idQuantity.put(availableProducts.get(product), 1);
+		}
+	}
+	public void supplyProducts(SupplyRequest supply){
+		for (Map.Entry<Integer,Integer> item : supply.getPackageOrder().entrySet()) {
+			if(idQuantity.containsKey(item.getKey())){
+				idQuantity.put(item.getKey(),idQuantity.get(item.getKey())+item.getValue());
+			}else{
+				idQuantity.put(item.getKey(),item.getValue());
+			}
 		}
 	}
 	

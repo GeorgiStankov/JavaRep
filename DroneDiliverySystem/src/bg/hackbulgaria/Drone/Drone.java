@@ -6,6 +6,7 @@ public class Drone {
 	private double capacity;
 	private double chargingRate;
 	private int counter = 1;
+	
 
 	public Drone() {
 		this.id = counter;

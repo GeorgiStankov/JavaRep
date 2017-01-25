@@ -1,6 +1,7 @@
 package bg.hackbulgaria.Distribution;
 
 import bg.hackbulgaria.Warehouse.Order;
+import bg.hackbulgaria.Warehouse.SupplyRequest;
 
 public class RequestManager {
 
@@ -14,8 +15,10 @@ public class RequestManager {
 
 		return dc.containProduct(order) && dc.enoughDrones(order);
 	}
-	public boolean acceptSupply(Order order){
-		return false;
+	public void acceptSupply(SupplyRequest supply){
+		dc.addProducts(supply);
+		System.out.println("Products Added");
+		
 	}
 
 }

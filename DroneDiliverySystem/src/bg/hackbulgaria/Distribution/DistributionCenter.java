@@ -7,6 +7,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import bg.hackbulgaria.Calculations.CalculateParameters;
 import bg.hackbulgaria.DroneConstants.DroneConstants;
 import bg.hackbulgaria.Warehouse.Order;
+import bg.hackbulgaria.Warehouse.SupplyRequest;
 import bg.hackbulgaria.Warehouse.Warehouse;
 
 public class DistributionCenter {
@@ -29,6 +30,10 @@ public class DistributionCenter {
 		}
 		
 		return contains;
+	}
+	public void addProducts(SupplyRequest supply){
+		whs.get(supply.getId()).supplyProducts(supply);
+		
 	}
 	public boolean enoughDrones(Order order){
 		
