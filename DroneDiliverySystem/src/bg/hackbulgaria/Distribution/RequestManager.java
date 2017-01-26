@@ -12,16 +12,18 @@ public class RequestManager {
 	}
 
 	public boolean acceptRequest(Order order) {
-		if(dc.containProduct(order) && dc.enoughDrones(order)){
-			dc.sentProducts(order);
+		
+		if (dc.containProduct(order) && dc.enoughDrones(order)) {
+			dc.sendProducts(order);
 			return true;
 		}
-		return false ;
+		return false;
 	}
-	public void acceptSupply(SupplyRequest supply){
+
+	public void acceptSupply(SupplyRequest supply) {
 		dc.addProducts(supply);
 		System.out.println("Products Added");
-		
+
 	}
 
 }

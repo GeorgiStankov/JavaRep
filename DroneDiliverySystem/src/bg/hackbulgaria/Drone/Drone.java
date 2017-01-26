@@ -8,14 +8,13 @@ public class Drone {
 	private long freeAt;
 	private boolean isFree;
 	private int counter = 1;
-	
 
 	public Drone() {
 		this.id = counter;
 		this.battery = 2000;
 		this.capacity = 10.0;
 		this.chargingRate = 10.0;
-		this.isFree=true;
+		this.isFree = true;
 		counter++;
 	}
 
@@ -52,14 +51,18 @@ public class Drone {
 	}
 
 	public boolean isFree() {
-		if(freeAt>System.currentTimeMillis()){
-			isFree=true;
+		if (freeAt > System.currentTimeMillis()) {
+			isFree = true;
 		}
 		return isFree;
 	}
 
 	public void setFreeAt(long freeAt) {
-		this.freeAt=freeAt;
+		this.freeAt = freeAt;
+	}
+
+	public long getFreeAt() {
+		return freeAt;
 	}
 
 }

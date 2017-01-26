@@ -58,16 +58,17 @@ public class Warehouse {
 			idQuantity.put(availableProducts.get(product), 1);
 		}
 	}
-	public void supplyProducts(SupplyRequest supply){
-		for (Map.Entry<Integer,Integer> item : supply.getPackageOrder().entrySet()) {
-			if(idQuantity.containsKey(item.getKey())){
-				idQuantity.put(item.getKey(),idQuantity.get(item.getKey())+item.getValue());
-			}else{
-				idQuantity.put(item.getKey(),item.getValue());
+
+	public void supplyProducts(SupplyRequest supply) {
+		for (Map.Entry<Integer, Integer> item : supply.getPackageOrder().entrySet()) {
+			if (idQuantity.containsKey(item.getKey())) {
+				idQuantity.put(item.getKey(), idQuantity.get(item.getKey()) + item.getValue());
+			} else {
+				idQuantity.put(item.getKey(), item.getValue());
 			}
 		}
 	}
-	
+
 	public synchronized boolean containsProductNTimes(int product, int quantity) {
 		if (idQuantity.containsKey(product)) {
 			if (idQuantity.get(product) >= quantity) {
@@ -84,10 +85,10 @@ public class Warehouse {
 
 			idQuantity.put(product, quantityLeft);
 		}
-		if (idQuantity.get(product) == quantity){
-			idQuantity.put(product,0);
+		if (idQuantity.get(product) == quantity) {
+			idQuantity.put(product, 0);
 		}
-			
+
 	}
 
 	public Map<Product, Integer> getAvailableProducts() {
@@ -102,7 +103,4 @@ public class Warehouse {
 		return coordinate;
 	}
 
-
-	
-	
 }
