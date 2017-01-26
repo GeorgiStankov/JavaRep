@@ -1,6 +1,5 @@
 package bg.hackbulgaria.Warehouse;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
@@ -98,5 +97,12 @@ public class Warehouse {
 	public void setAvailableProducts(Map<Product, Integer> availableProducts) {
 		this.availableProducts = availableProducts;
 	}
+
+	public Coordinates getCoordinate() {
+		return coordinate;
+	}
+
+
+	
 	
 }

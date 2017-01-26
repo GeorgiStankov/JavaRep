@@ -5,6 +5,8 @@ public class Drone {
 	private int battery;
 	private double capacity;
 	private double chargingRate;
+	private long freeAt;
+	private boolean isFree;
 	private int counter = 1;
 	
 
@@ -13,6 +15,7 @@ public class Drone {
 		this.battery = 2000;
 		this.capacity = 10.0;
 		this.chargingRate = 10.0;
+		this.isFree=true;
 		counter++;
 	}
 
@@ -46,6 +49,17 @@ public class Drone {
 
 	public void setChargingRate(double chargingRate) {
 		this.chargingRate = chargingRate;
+	}
+
+	public boolean isFree() {
+		if(freeAt>System.currentTimeMillis()){
+			isFree=true;
+		}
+		return isFree;
+	}
+
+	public void setFreeAt(long freeAt) {
+		this.freeAt=freeAt;
 	}
 
 }

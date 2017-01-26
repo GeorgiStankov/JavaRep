@@ -12,8 +12,11 @@ public class RequestManager {
 	}
 
 	public boolean acceptRequest(Order order) {
-
-		return dc.containProduct(order) && dc.enoughDrones(order);
+		if(dc.containProduct(order) && dc.enoughDrones(order)){
+			dc.sentProducts(order);
+			return true;
+		}
+		return false ;
 	}
 	public void acceptSupply(SupplyRequest supply){
 		dc.addProducts(supply);
