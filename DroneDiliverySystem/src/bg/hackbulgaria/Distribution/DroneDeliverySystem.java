@@ -34,7 +34,7 @@ public class DroneDeliverySystem {
 		this.io = new IO(rm);
 	}
 
-	public void menu() {
+	public void menu()  throws InputException{
 		System.out.println("Welcome to HackBulgaria drone delivery system");
 		System.out.println("Choose an operation:");
 		System.out.println("1.Make a delivery");
@@ -44,13 +44,26 @@ public class DroneDeliverySystem {
 		int operation = sc.nextInt();
 		switch (operation) {
 		case 1:
+			makeDelivery();
+			break;
+		case 2:
+			makeSupply();
+			break;
+		case 3:
+			showDeliveryHistory();
+			break;
+		case 4:
+			break;
+		default:
+			System.out.println("Invalid operation.");
 		}
 
 	}
 
-	public void makeDelivery() throws InputException{
+	public void makeDelivery() throws InputException {
 		System.out.println("Enter a delivery request in format delivery <id> <timestamp> "
 				+ "<target coordinates> <product id 1> <quantity> <product id 2> <quantity> ...");
+		sc.nextLine();
 		String input = sc.nextLine();
 		if (acceptDelivery(input)) {
 			System.out.println("Delivery request accepted.");
@@ -63,13 +76,18 @@ public class DroneDeliverySystem {
 	public void makeSupply() throws InputException {
 		System.out.println("Enter a supply request in format "
 				+ "supply <id> <warehouse id> <timestamp YYYY-MM-DD HH:MM> <product id 1> <quantity> <product id 2> <quantity>");
-		String input=sc.nextLine();
+		sc.nextLine();
+		String input = sc.nextLine();
 		acceptSupply(input);
+	}
+	public void showDeliveryHistory(){
+		io.showDeliveryHistory();
 	}
 
 	public boolean acceptDelivery(String delivery) {
 		return io.acceptDelivery(delivery);
 	}
+
 	public void acceptSupply(String supply) {
 		io.acceptSupply(supply);
 	}

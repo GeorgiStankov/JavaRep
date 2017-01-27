@@ -1,11 +1,12 @@
 package bg.hackbulgaria.Warehouse;
 
+import java.util.Date;
 import java.util.Map;
 
 import bg.hackbulgaria.Coordinates.Coordinates;
 
 public class Order {
-	
+
 	private int id;
 	private int idWh;
 	// number of quantity of given product
@@ -59,6 +60,10 @@ public class Order {
 	public void setIdWh(int idWh) {
 		this.idWh = idWh;
 	}
-	
+
+	public String toString() {
+		return "Id-" + this.getId() + ",WarehouseId-" + this.getIdWh() + ",Time-" + new Date().getTime()
+				+ "ID to QAUNTITY" + this.packageOrder.toString();
+	}
 
 }

@@ -22,4 +22,7 @@ public class IO {
 		SupplyRequest supplyRequest = new SupplyRequest(Parse.ParseToSupply(supply));
 		rm.acceptSupply(supplyRequest);
 	}
+	public void showDeliveryHistory(){
+		rm.showDeliveryLog();
+	}
 }

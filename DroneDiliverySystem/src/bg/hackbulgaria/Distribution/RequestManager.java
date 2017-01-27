@@ -15,6 +15,7 @@ public class RequestManager {
 		order = dc.nearestWarehouse(order);
 		if (dc.containProduct(order) && dc.enoughDrones(order)) {
 			dc.sendProducts(order);
+			dc.addToDeliveryLog(order);
 			return true;
 		}
 		return false;
@@ -24,6 +25,9 @@ public class RequestManager {
 		dc.addProducts(supply);
 		System.out.println("Products Added");
 
+	}
+	public void showDeliveryLog(){
+		dc.showDeliveryLog();
 	}
 
 }

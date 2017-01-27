@@ -14,6 +14,8 @@ import bg.hackbulgaria.Warehouse.Warehouse;
 
 public class DistributionCenter {
 	private List<Warehouse> whs = new CopyOnWriteArrayList<Warehouse>();
+	private List<String> deliveryLog=new CopyOnWriteArrayList<String>();
+	private List<String> supplyLog=new CopyOnWriteArrayList<String>();
 
 	public DistributionCenter(Warehouse warehouse) {
 		whs.add(warehouse);
@@ -85,5 +87,12 @@ public class DistributionCenter {
 		
 		return order;
 	}
-
+	public void addToDeliveryLog(Order order){
+		deliveryLog.add(order.toString());
+	}
+	public void showDeliveryLog(){
+		for (String item : deliveryLog) {
+			System.out.println(item);
+		}
+	}
 }
