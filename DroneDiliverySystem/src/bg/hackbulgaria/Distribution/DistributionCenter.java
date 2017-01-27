@@ -48,8 +48,7 @@ public class DistributionCenter {
 			int seconds = (int) (milliseconds / 1000) % 60;
 			int minutes = (int) ((milliseconds / (1000 * 60)) % 60);
 			int hours = (int) ((milliseconds / (1000 * 60 * 60)) % 24);
-			System.out.println((hours + 2) + ":" + minutes + ":" + seconds);
-			System.out.println("Drone " + i + " is coming at" + whs.get(0).getDrones().get(0).getFreeAt());
+			System.out.println("Drone " + (i+1) + " is coming at" +(hours + 2) + ":" + minutes + ":" + seconds);
 		}
 
 		return true;
