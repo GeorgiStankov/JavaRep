@@ -7,6 +7,7 @@ import bg.hackbulgaria.Coordinates.Coordinates;
 public class Order {
 	
 	private int id;
+	private int idWh;
 	// number of quantity of given product
 	// id-->quantity
 	private Map<Integer, Integer> packageOrder;
@@ -50,5 +51,14 @@ public class Order {
 	public void setCoords(Coordinates coords) {
 		this.coords = coords;
 	}
+
+	public int getIdWh() {
+		return idWh;
+	}
+
+	public void setIdWh(int idWh) {
+		this.idWh = idWh;
+	}
+	
 
 }

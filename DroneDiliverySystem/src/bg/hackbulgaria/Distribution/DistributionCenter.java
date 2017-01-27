@@ -24,7 +24,7 @@ public class DistributionCenter {
 		boolean contains = false;
 		Map<Integer, Integer> order1 = order.getOrder();
 		for (Map.Entry<Integer, Integer> item : order1.entrySet()) {
-			if (whs.get(0).containsProductNTimes(item.getKey(), item.getValue())) {
+			if (whs.get(order.getIdWh()).containsProductNTimes(item.getKey(), item.getValue())) {
 				contains = true;
 			} else
 				return false;
@@ -35,12 +35,12 @@ public class DistributionCenter {
 
 	public boolean sendProducts(Order order) {
 
-		List<Drone> dronesToBeSend = CalculateParameters.listOfLoadedDrones(order, whs.get(0));
+		List<Drone> dronesToBeSend = CalculateParameters.listOfLoadedDrones(order, whs.get(order.getIdWh()));
 		Map<Integer, Integer> order1 = order.getOrder();
 		for (Map.Entry<Integer, Integer> item : order1.entrySet()) {
-			whs.get(0).removeProductNTimes(item.getKey(), item.getValue());
+			whs.get(order.getIdWh()).removeProductNTimes(item.getKey(), item.getValue());
 		}
-		double distance = CalculatingDistance.Distance(whs.get(0).getCoordinate(), order.getCoords());
+		double distance = CalculatingDistance.Distance(whs.get(order.getIdWh()).getCoordinate(), order.getCoords());
 		long busy = 2 * ((int) Math.ceil(distance) + order.getOrder().values().size());
 		for (int i = 0; i < dronesToBeSend.size(); i++) {
 			dronesToBeSend.get(i).setFreeAt(busy * 1000 * 60 + System.currentTimeMillis());
@@ -66,16 +66,25 @@ public class DistributionCenter {
 	}
 
 	public int requiredDrones(Order order) {
-		int requiredDrones = CalculateParameters.getNumberOfRequiredDrones(order, whs.get(0).getAvailableProducts());
+		int requiredDrones = CalculateParameters.getNumberOfRequiredDrones(order, whs.get(order.getIdWh()).getAvailableProducts());
 
 		return requiredDrones;
 	}
 
-	public int nearestWarehouse(Order order) {
-		int targetX = order.getCoords().getX();
-		int targetY = order.getCoords().getY();
+	public Order nearestWarehouse(Order order) {
+		double shortestDist = Double.MAX_VALUE;
+		int id=0;
+		for (int i = 0; i < whs.size(); i++) {
+			double temp = CalculatingDistance.Distance(whs.get(i).getCoordinate(), order.getCoords());
+			order.setIdWh(i);
+			if (temp < shortestDist && containProduct(order) ) {
+				shortestDist = temp;
+				id=i;
+			}
+		}
+		order.setIdWh(id);
 		
-		return 0;
+		return order;
 	}
 
 }

@@ -12,7 +12,7 @@ public class RequestManager {
 	}
 
 	public boolean acceptRequest(Order order) {
-		
+		order = dc.nearestWarehouse(order);
 		if (dc.containProduct(order) && dc.enoughDrones(order)) {
 			dc.sendProducts(order);
 			return true;
