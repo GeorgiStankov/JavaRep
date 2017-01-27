@@ -9,11 +9,11 @@ public class Drone {
 	private boolean isFree;
 	private int counter = 1;
 
-	public Drone() {
+	public Drone(int battery,double capacity,double chargingRate) {
 		this.id = counter;
-		this.battery = 2000;
-		this.capacity = 10.0;
-		this.chargingRate = 10.0;
+		this.battery = battery;
+		this.capacity = capacity;
+		this.chargingRate = chargingRate;
 		this.isFree = true;
 		counter++;
 	}

@@ -55,5 +55,8 @@ public class SupplyRequest {
 	public void setPackageOrder(Map<Integer, Integer> packageOrder) {
 		this.packageOrder = packageOrder;
 	}
+	public String toString(){
+		return "ID-"+this.getId()+"WarehouseID-"+this.getWhId()+",Timestamp-"+this.getTimestamp()+",ID to QUANTITY-"+this.getPackageOrder().toString();
+	}
 
 }

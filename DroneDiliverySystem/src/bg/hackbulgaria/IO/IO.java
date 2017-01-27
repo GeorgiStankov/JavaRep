@@ -13,16 +13,20 @@ public class IO {
 	}
 
 	public boolean acceptDelivery(String delivery) {
-
 		Order request = new Order(Parse.ParseDeliveryToOrder(delivery));
 		return rm.acceptRequest(request);
+
 	}
 
 	public void acceptSupply(String supply) {
 		SupplyRequest supplyRequest = new SupplyRequest(Parse.ParseToSupply(supply));
 		rm.acceptSupply(supplyRequest);
 	}
-	public void showDeliveryHistory(){
+
+	public void showDeliveryHistory() {
 		rm.showDeliveryLog();
+	}
+	public void showSupplyHistory(){
+		rm.showSupplyLog();
 	}
 }

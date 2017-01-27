@@ -14,9 +14,10 @@ import bg.hackbulgaria.DroneConstants.DroneConstants;
 
 public class Warehouse {
 
-	private DistributionCenter center;
+	
 	private Coordinates coordinate;
 	private Map<Product, Integer> availableProducts;
+	// id--> quantity
 	private Map<Integer, Integer> idQuantity;
 	public Queue<Order> orders;
 	private List<Drone> drones;
@@ -29,9 +30,9 @@ public class Warehouse {
 		orders = new ConcurrentLinkedQueue<>();
 		drones = new CopyOnWriteArrayList<>();
 		for (int i = 0; i < DroneConstants.MAX_DRONES; i++) {
-			drones.add(new Drone());
+			drones.add(new Drone(2000,500.0,5.0));
+			drones.add(new Drone(1200,200.0,3.0));
 		}
-		center = new DistributionCenter(this);
 
 	}
 

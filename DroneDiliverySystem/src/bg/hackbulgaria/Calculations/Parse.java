@@ -25,14 +25,14 @@ public class Parse {
 		order.setOrder(goods);
 		return order;
 	}
-	
+//	supply 5 2016-10-25 12:32 5 100 6 50 2 4
 	public static SupplyRequest ParseToSupply(String request){
 		String [] parts=request.split(" ");
 		int id=Integer.parseInt(parts[0]);
 		int whId=Integer.parseInt(parts[1]);
-		String time=parts[2];
+		String time=parts[2]+" "+parts[3];
 		HashMap<Integer, Integer> goods = new HashMap<>();
-		for (int i =3; i < parts.length; i += 2) {
+		for (int i =4; i < parts.length; i += 2) {
 			goods.put(Integer.parseInt(parts[i]), Integer.parseInt(parts[i + 1]));
 		}
 		SupplyRequest spr =new SupplyRequest(id,whId,time,goods);

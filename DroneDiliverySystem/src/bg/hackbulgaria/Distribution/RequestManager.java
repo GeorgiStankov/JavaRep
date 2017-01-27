@@ -23,11 +23,16 @@ public class RequestManager {
 
 	public void acceptSupply(SupplyRequest supply) {
 		dc.addProducts(supply);
+		dc.addToSupplyLog(supply);
 		System.out.println("Products Added");
 
 	}
-	public void showDeliveryLog(){
+
+	public void showDeliveryLog() {
 		dc.showDeliveryLog();
 	}
 
+	public void showSupplyLog() {
+		dc.showSupplyLog();
+	}
 }

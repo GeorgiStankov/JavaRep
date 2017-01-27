@@ -3,7 +3,6 @@ package bg.hackbulgaria.Distribution;
 import java.util.Scanner;
 
 import bg.hackbulgaria.Coordinates.Coordinates;
-import bg.hackbulgaria.Exceptions.InputException;
 import bg.hackbulgaria.IO.IO;
 import bg.hackbulgaria.Warehouse.Product;
 import bg.hackbulgaria.Warehouse.Warehouse;
@@ -34,7 +33,7 @@ public class DroneDeliverySystem {
 		this.io = new IO(rm);
 	}
 
-	public void menu()  throws InputException{
+	public void menu() {
 		System.out.println("Welcome to HackBulgaria drone delivery system");
 		System.out.println("Choose an operation:");
 		System.out.println("1.Make a delivery");
@@ -53,6 +52,7 @@ public class DroneDeliverySystem {
 			showDeliveryHistory();
 			break;
 		case 4:
+			showSupplyHistory();
 			break;
 		default:
 			System.out.println("Invalid operation.");
@@ -60,7 +60,7 @@ public class DroneDeliverySystem {
 
 	}
 
-	public void makeDelivery() throws InputException {
+	public void makeDelivery() {
 		System.out.println("Enter a delivery request in format delivery <id> <timestamp> "
 				+ "<target coordinates> <product id 1> <quantity> <product id 2> <quantity> ...");
 		sc.nextLine();
@@ -73,15 +73,20 @@ public class DroneDeliverySystem {
 
 	}
 
-	public void makeSupply() throws InputException {
+	public void makeSupply() {
 		System.out.println("Enter a supply request in format "
 				+ "supply <id> <warehouse id> <timestamp YYYY-MM-DD HH:MM> <product id 1> <quantity> <product id 2> <quantity>");
 		sc.nextLine();
 		String input = sc.nextLine();
 		acceptSupply(input);
 	}
-	public void showDeliveryHistory(){
+
+	public void showDeliveryHistory() {
 		io.showDeliveryHistory();
+	}
+
+	public void showSupplyHistory() {
+		io.showSupplyHistory();
 	}
 
 	public boolean acceptDelivery(String delivery) {

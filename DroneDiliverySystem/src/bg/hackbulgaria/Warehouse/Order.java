@@ -62,8 +62,8 @@ public class Order {
 	}
 
 	public String toString() {
-		return "Id-" + this.getId() + ",WarehouseId-" + this.getIdWh() + ",Time-" + new Date().getTime()
-				+ "ID to QAUNTITY" + this.packageOrder.toString();
+		return "Id-" + this.getId() + ",WarehouseId-" + this.getIdWh() + ",Time-" + new Date()
+				+ ",ID to QAUNTITY" + this.packageOrder.toString();
 	}
 
 }

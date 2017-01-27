@@ -14,8 +14,8 @@ import bg.hackbulgaria.Warehouse.Warehouse;
 
 public class DistributionCenter {
 	private List<Warehouse> whs = new CopyOnWriteArrayList<Warehouse>();
-	private List<String> deliveryLog=new CopyOnWriteArrayList<String>();
-	private List<String> supplyLog=new CopyOnWriteArrayList<String>();
+	private List<String> deliveryLog = new CopyOnWriteArrayList<String>();
+	private List<String> supplyLog = new CopyOnWriteArrayList<String>();
 
 	public DistributionCenter(Warehouse warehouse) {
 		whs.add(warehouse);
@@ -50,14 +50,14 @@ public class DistributionCenter {
 			int seconds = (int) (milliseconds / 1000) % 60;
 			int minutes = (int) ((milliseconds / (1000 * 60)) % 60);
 			int hours = (int) ((milliseconds / (1000 * 60 * 60)) % 24);
-			System.out.println("Drone " + (i+1) + " is coming at" +(hours + 2) + ":" + minutes + ":" + seconds);
+			System.out.println("Drone " + (i + 1) + " is coming at" + (hours + 2) + ":" + minutes + ":" + seconds);
 		}
 
 		return true;
 	}
 
 	public void addProducts(SupplyRequest supply) {
-		whs.get(supply.getId()).supplyProducts(supply);
+		whs.get(supply.getWhId()-1).supplyProducts(supply);
 
 	}
 
@@ -67,31 +67,44 @@ public class DistributionCenter {
 	}
 
 	public int requiredDrones(Order order) {
-		int requiredDrones = CalculateParameters.getNumberOfRequiredDrones(order, whs.get(order.getIdWh()).getAvailableProducts());
+		int requiredDrones = CalculateParameters.getNumberOfRequiredDrones(order,
+				whs.get(order.getIdWh()).getAvailableProducts());
 
 		return requiredDrones;
 	}
 
 	public Order nearestWarehouse(Order order) {
 		double shortestDist = Double.MAX_VALUE;
-		int id=0;
+		int id = 0;
 		for (int i = 0; i < whs.size(); i++) {
 			double temp = CalculatingDistance.Distance(whs.get(i).getCoordinate(), order.getCoords());
 			order.setIdWh(i);
-			if (temp < shortestDist && containProduct(order) ) {
+			if (temp < shortestDist && containProduct(order)) {
 				shortestDist = temp;
-				id=i;
+				id = i;
 			}
 		}
 		order.setIdWh(id);
-		
+
 		return order;
 	}
-	public void addToDeliveryLog(Order order){
+
+	public void addToDeliveryLog(Order order) {
 		deliveryLog.add(order.toString());
 	}
-	public void showDeliveryLog(){
+
+	public void showDeliveryLog() {
 		for (String item : deliveryLog) {
+			System.out.println(item);
+		}
+	}
+
+	public void addToSupplyLog(SupplyRequest supply) {
+		supplyLog.add(supply.toString());
+	}
+
+	public void showSupplyLog() {
+		for (String item : supplyLog) {
 			System.out.println(item);
 		}
 	}
