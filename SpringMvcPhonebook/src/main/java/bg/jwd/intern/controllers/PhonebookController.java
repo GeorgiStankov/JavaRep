@@ -25,7 +25,7 @@ public class PhonebookController {
 
 	@RequestMapping(value = "/addPerson", method = RequestMethod.GET)
 	public String addPerson() {
-		return "addPerson";
+		return "actionsDeveloper";
 	}
 
 	@RequestMapping(value = "/addPersonSave", method = RequestMethod.POST)
@@ -40,12 +40,12 @@ public class PhonebookController {
 		return "PhonebookRegistry";
 	}
 
-	@RequestMapping(value = "/removePerson", method = RequestMethod.GET)
+	@RequestMapping(value = "/removeDeveloper", method = RequestMethod.GET)
 	public String removePerson() {
 		return "removePerson";
 	}
 
-	@RequestMapping(value = "/removePersonSave", method = RequestMethod.GET)
+	@RequestMapping(value = "/removeDeveloperSave", method = RequestMethod.GET)
 	public String removePersonSave(Model model, String name) {
 
 		if (phonebookService.removing(name)) {
