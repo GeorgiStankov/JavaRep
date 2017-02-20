@@ -36,11 +36,11 @@
 		<beans:property name="databasePlatform"
 			value="org.hibernate.dialect.HSQLDialect" />
 	</beans:bean>
-
+	<!-- DATABASE INFORMATIO -->
 	<beans:bean id="jpaDialect"
 		class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
 
-		<beans:bean id="dataSource"
+	<beans:bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<beans:property name="url"
@@ -54,7 +54,8 @@
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<beans:property name="persistenceXmlLocation"
 			value="classpath:META-INF/persistence.xml" />
-<!-- 		<beans:property name="persistenceUnitName" value="personPersistenceUnit" /> -->
+		<!-- <beans:property name="persistenceUnitName" value="personPersistenceUnit" 
+			/> -->
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
 		<beans:property name="jpaDialect" ref="jpaDialect" />

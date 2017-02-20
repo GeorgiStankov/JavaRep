@@ -2,30 +2,32 @@
 <%@ page session="false"%>
 <html>
 <head>
-<title>Developers Registry</title>
+<title>Issues Registry</title>
 </head>
 <body>
-	<h1>Developers Registry</h1>
-	<button type="button" onclick="location = 'actionsDeveloper'">Developer
+	<h1>Issues Registry</h1>
+		<button type="button" onclick="location = 'actionIssue'">Issue
 		Actions</button>
 	<table border="1">
 		<thead>
 			<tr>
 				<td>ID</td>
-				<td>Name</td>
-				<td>Role</td>
+				<td>Title</td>
 				<td>Date</td>
+				<td>Description</td>
+				<td>Owner</td>
 			</tr>
 		</thead>
 
-		<c:if test="${not empty Devs }">
+		<c:if test="${not empty Issues }">
 			<tbody>
-				<c:forEach var="s" items="${Devs}">
+				<c:forEach var="s" items="${Issues}">
 					<tr>
 						<td>${s.id }</td>
-						<td>${s.name }</td>
-						<td>${s.role }</td>
+						<td>${s.title }</td>
 						<td>${s.date }</td>
+						<td>${s.description }</td>
+						<td>${s.owner.name }</td>
 					</tr>
 				</c:forEach>
 

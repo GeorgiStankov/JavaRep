@@ -8,8 +8,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "developers")
 public class Developer {
+
 	@Id
-	@Column
+	@Column(name = "id")
 	private int id;
 	@Column(name = "name")
 	private String name;
@@ -18,7 +19,7 @@ public class Developer {
 	@Column(name = "startWorkingDate")
 	private String date;
 	@Column(name = "teamLead_id")
-	private int teadLeadID;
+	private String teadLeadID;
 
 	public int getId() {
 		return id;
@@ -52,11 +53,11 @@ public class Developer {
 		this.date = date;
 	}
 
-	public int getTeadLeadID() {
+	public String getTeadLeadID() {
 		return teadLeadID;
 	}
 
-	public void setTeadLeadID(int teadLeadID) {
+	public void setTeadLeadID(String teadLeadID) {
 		this.teadLeadID = teadLeadID;
 	}
 

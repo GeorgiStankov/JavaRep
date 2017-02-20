@@ -33,7 +33,7 @@ public class DevDaoImpl implements DevDao {
 	@Override
 	@Transactional
 	public boolean delete(int id) {
-		String sql = "SELECT d FROM Developer d WHERE name='" + id + "'";
+		String sql = "SELECT d FROM Developer d WHERE id=" + id + "";
 		List<Developer> personToRemove = entityManager.createQuery(sql).getResultList();
 		for (Developer d : personToRemove) {
 			entityManager.remove(d);
@@ -43,9 +43,14 @@ public class DevDaoImpl implements DevDao {
 
 	@Override
 	@Transactional
-	public boolean edit(int id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean edit(Developer dev) {
+		Developer developer = entityManager.find(Developer.class, dev.getId());
+		
+		developer.setName(dev.getName());
+		developer.setRole(dev.getRole());
+		developer.setDate(dev.getDate());
+		developer.setTeadLeadID(dev.getTeadLeadID());
+		return true;
 	}
 
 }

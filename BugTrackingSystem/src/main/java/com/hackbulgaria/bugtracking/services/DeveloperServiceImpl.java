@@ -25,9 +25,9 @@ public class DeveloperServiceImpl implements DeveloperService {
 	}
 
 	@Override
-	public boolean editDeveloper(int id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean editDeveloper(Developer dev) {
+		DevDao.edit(dev);
+		return true;
 	}
 
 	@Override

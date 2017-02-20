@@ -1,13 +1,17 @@
 package com.hackbulgaria.bugtracking.services;
 
-import com.hackbulgaria.bugtracking.entities.Developer;
+import java.util.List;
+
+import com.hackbulgaria.bugtracking.entities.Issue;
 
 public interface IssueService {
-	public boolean createIssue(Developer dev);
+	public List<Issue> getIssues();
+	
+	public boolean createIssue(Issue issue);
 
 	public boolean deleteIssue(int id);
 
-	public boolean editIssue(int id);
+	public boolean editIssue(Issue id);
 	// TODO search by ...
 	// public boolean searchIssue();
 }

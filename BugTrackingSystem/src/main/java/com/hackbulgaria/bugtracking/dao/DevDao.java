@@ -12,7 +12,7 @@ public interface DevDao {
 
 	public boolean delete(int id);
 
-	public boolean edit(int id);
+	public boolean edit(Developer dev);
 	// TODO search by
 	// public boolean search(?);
 
