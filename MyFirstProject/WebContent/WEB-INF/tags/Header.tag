@@ -1,2 +1,0 @@
-<%@ attribute name="title"%>
-${title}
